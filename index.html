@@ -9,26 +9,55 @@
 </head>
 
 <body>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+    
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
+    <nav class="sidebar-nav" id="sidebarNav">
+        <ul>
+            <li><a href="#">Autobots</a></li>
+            <li><a href="#abstract">Abstract</a></li>
+            <li><a href="#background">Background</a></li>
+            <li><a href="#problem-statement">Problem Statement</a></li>
+            <li><a href="#data">Data</a></li>
+            <li><a href="#proposed-solution">Proposed Solution</a></li>
+            <li><a href="#evaluation-metrics">Evaluation Metrics</a></li>
+            <li><a href="#results">Results</a></li>
+            <li><a href="#discussion">Discussion</a></li>
+            <li><a href="#limitations">Limitations</a></li>
+            <li><a href="#future-work">Future Work</a></li>
+            <li><a href="#ethics-privacy">Ethics & Privacy</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+            <li><a href="#footnotes">Footnotes</a></li>
+        </ul>
+    </nav>
+    
     <div class="container">
         <header>
-            <h1>AutoBots: Using Reinforcement Learning with Carla & DonkeySim</h1>
-            <p>COGS 188 [Artificial Intelligence Algorithms] - Final Project</p>
+            <h1>AutoBots: Reinforcement Learning for Autonomous Vehicles</h1>
+            <div class="header-buttons">
+                <a href="https://github.com/AbhayAnandUCSD/Autobots" target="_blank" class="header-btn github-btn">GitHub Repository</a>
+                <a href="https://drive.google.com/drive/folders/1K7cDpq456Woh-fQq7A6EAiD3Nz-YboTQ?usp=sharing" target="_blank" class="header-btn videos-btn">Videos</a>
+            </div>
         </header>
 
         <section id="group-members">
-            <h2>Group Members</h2>
+            <h2><a href="#" class="section-title-link">Autobots</a></h2>
             <ul>
                 <li><a href="https://abhayananducsd.github.io/Portfolio/">Abhay Anand</a></li>
-                <li>Ashesh Kaji</li>
+                <li><a href="https://www.linkedin.com/in/ashesh-kaji-b5a3161b9/">Ashesh Kaji</a></li>
                 <li><a href="https://anshu-b.github.io/ansh/">Ansh Bhatnagar</a></li>
-                <li>Varun Pillai</li>
             </ul>
         </section>
 
         <section id="abstract">
             <h2>Abstract</h2>
             <p>
-                The goal of this project is to train a Reinforcement Learning (RL) Classifier on autonomous vehicles. We plan to use both CARLA and DonkeyCar Simulator to navigate our vehicle. CARLA will provide a complex urban driving environment, while the DonkeyCar simulator will be used for a simpler track-based navigation on it's “Warren Field” circuit. We plan to solely rely on a Lidar sensor for data collection because of its robustness in capturing depth information and obstacle detection regardless of lighting conditions, an advantage over typical computer vision based data collection. We implement two deep RL algorithms: Actor-Critic and Proximal Policy Optimization (PPO), both designed for continuous action spaces since algorithms like simple a simple Q learning to are ineffective for problems in continious action spaces. We will use the gathered data to train agents to take optimal actions such as steering, acceleration, and braking based on the cars current position relative to the world. Performance will be evaluated using key metrics such as cumulative reward, lap completion time, and distance travelled. By comparing these metrics across different models and training scenarios, we aim to determine which RL method provides the most robust and efficient control for autonomous driving in simulated environments.
+                The goal of this project is to train a Reinforcement Learning (RL) Classifier on autonomous vehicles. We plan to use both CARLA and DonkeyCar Simulator to navigate our vehicle. CARLA will provide a complex urban driving environment, while the DonkeyCar simulator will be used for a simpler track-based navigation on it's "Warren Field" circuit. We plan to solely rely on a Lidar sensor for data collection because of its robustness in capturing depth information and obstacle detection regardless of lighting conditions, an advantage over typical computer vision based data collection. We implement two deep RL algorithms: Actor-Critic and Proximal Policy Optimization (PPO), both designed for continuous action spaces since algorithms like simple a simple Q learning to are ineffective for problems in continious action spaces. We will use the gathered data to train agents to take optimal actions such as steering, acceleration, and braking based on the cars current position relative to the world. Performance will be evaluated using key metrics such as cumulative reward, lap completion time, and distance travelled. By comparing these metrics across different models and training scenarios, we aim to determine which RL method provides the most robust and efficient control for autonomous driving in simulated environments.
             </p>
         </section>
 
@@ -997,4 +1026,34 @@
         <footer>
             <p>&copy; COGS 188 Winter 2025 Autobots Project.</p>
         </footer>
+    </div>
+    
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const sidebarNav = document.getElementById('sidebarNav');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        
+        function toggleSidebar() {
+            sidebarNav.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            sidebarOverlay.classList.toggle('active');
+        }
+        
+        function closeSidebar() {
+            sidebarNav.classList.remove('active');
+            menuToggle.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+        }
+        
+        menuToggle.addEventListener('click', toggleSidebar);
+        sidebarOverlay.addEventListener('click', closeSidebar);
+        
+        // Close sidebar when clicking on a link
+        const navLinks = sidebarNav.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', closeSidebar);
+        });
+    </script>
             
+</body>
+</html>
